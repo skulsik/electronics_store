@@ -42,3 +42,55 @@ class Test_Products_in_the_store():
         self.products_in_the_store.product_price = 23000
         self.products_in_the_store.price_level = 0.5
         assert self.products_in_the_store.apply_discount() == 11500
+
+
+    def test_product_name(self):
+        """
+        Проверка на введение корректных данных
+        :return:
+        """
+        item = Products_in_the_store("Фен", 1_000_000, 1)
+        item.product_name = "Мотоцикл"
+        assert item.product_name == "Мотоцикл"
+
+
+    def test_product_name_more(self):
+        """
+        Проверка слова, длинна которого больше 10 символов
+        :return:
+        """
+        item = Products_in_the_store("Фен", 1_000_000, 1)
+        item.product_name = "Вибромасажер"
+        assert item.product_name == "Фен"
+
+
+    def test_is_integer_int(self):
+        """
+        Ввод целого числа
+        :return:
+        """
+        assert Products_in_the_store.is_integer(777) == True
+
+
+    def test_is_integer_int_float(self):
+        """
+        Ввод целого числа в формате float
+        :return:
+        """
+        assert Products_in_the_store.is_integer(9.0) == True
+
+
+    def test_is_integer_false(self):
+        """
+        Ввод не целого числа
+        :return:
+        """
+        assert Products_in_the_store.is_integer(9.9) == False
+
+
+    def test_is_integer_error(self):
+        """
+        Ни чего не вводим, проверка на ошибку
+        :return:
+        """
+        assert Products_in_the_store.is_integer() == 'is_integer(сюда нужно ввести число)'
