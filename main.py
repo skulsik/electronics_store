@@ -16,22 +16,30 @@ from utils.utils import Products_in_the_store
 
 
 # ТЗ-2
-item1 = Products_in_the_store("Laptop", 54_000, 3)
-print(item1.product_name)
+# item1 = Products_in_the_store("Laptop", 54_000, 3)
+# print(item1.product_name)
+#
+# item1.product_name = "Вибромасажёр"
+# print(item1.product_name)
+#
+# item1.product_name = "Чайник"
+# print(item1.product_name)
+#
+# Products_in_the_store.read_csv()
+# print(len(Products_in_the_store.list_product_in_the_store))
+#
+# item2 = Products_in_the_store.list_product_in_the_store[0]
+# print(item2.product_name)
+#
+# print(Products_in_the_store.is_integer(5))
+# print(Products_in_the_store.is_integer(5.0))
+# print(Products_in_the_store.is_integer(5.5))
+# print(Products_in_the_store.is_integer())
 
-item1.product_name = "Вибромасажёр"
-print(item1.product_name)
 
-item1.product_name = "Чайник"
-print(item1.product_name)
+# TЗ-3
+item1 = Products_in_the_store("Смартфон", 10000, 20)
+item1
 
-Products_in_the_store.read_csv()
-print(len(Products_in_the_store.list_product_in_the_store))
-
-item2 = Products_in_the_store.list_product_in_the_store[0]
-print(item2.product_name)
-
-print(Products_in_the_store.is_integer(5))
-print(Products_in_the_store.is_integer(5.0))
-print(Products_in_the_store.is_integer(5.5))
-print(Products_in_the_store.is_integer())
+Products_in_the_store("Смартфон", 10000, 20)
+print(item1)
