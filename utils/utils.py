@@ -99,3 +99,17 @@ class Products_in_the_store:
             return True
 
         return False
+
+
+    def __repr__(self):
+        """
+        :return: Возврат названия класса и переменныых поступивших при инициализации
+        """
+        return f"Products_in_the_store({self.__product_name}, {self.product_price}, {self.product_quantity})"
+
+
+    def __str__(self):
+        """
+        :return: Возврат названия товара
+        """
+        return self.__product_name
