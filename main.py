@@ -1,4 +1,4 @@
-from utils.utils import Products_in_the_store
+from utils.utils import *
 
 # ТЗ-1
 # item1 = Products_in_the_store("Смартфон", 10_000, 20)
@@ -38,8 +38,16 @@ from utils.utils import Products_in_the_store
 
 
 # TЗ-3
-item1 = Products_in_the_store("Смартфон", 10000, 20)
-item1
+# item1 = Products_in_the_store("Смартфон", 10000, 20)
+# item1
+#
+# Products_in_the_store("Смартфон", 10000, 20)
+# print(item1)
 
-Products_in_the_store("Смартфон", 10000, 20)
-print(item1)
+# ТЗ-4
+phone1 = Phone("iPhone 14", 120_000, 5, 2)
+print(phone1)
+
+phone2 = Products_in_the_store("Doogee", 12_000, 24)
+print(phone1 + phone2)
+print(phone1 + 454)

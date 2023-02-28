@@ -1,4 +1,4 @@
-from utils.utils import Products_in_the_store
+from utils.utils import *
 
 
 class Test_Products_in_the_store():
@@ -94,3 +94,32 @@ class Test_Products_in_the_store():
         :return:
         """
         assert Products_in_the_store.is_integer() == 'is_integer(сюда нужно ввести число)'
+
+
+class Test_Phone():
+    # Создаем экземпляр для теста
+    product1 = Phone("nokia", 20_000, 2)
+    product2 = Products_in_the_store("doogee", 3_000, 4)
+
+
+    def test__init__(self):
+        """
+        Проверка без введенных данных
+        :return:
+        """
+        assert self.product1.number_of_sim == 0
+
+    def test__add__(self):
+        """
+        Проверка сложения классов в отношениях
+        :return:
+        """
+        assert (self.product1 + self.product2) == 6
+
+
+    def test__add__error(self):
+        """
+        Проверка сложения классов в отношениях
+        :return:
+        """
+        assert (self.product1 + 7898) == "Только с классом Products_in_the_store"
