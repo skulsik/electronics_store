@@ -78,7 +78,7 @@ class Products_in_the_store:
 
 
     @staticmethod
-    def is_integer(number=None):
+    def is_integer(number=None) -> bool:
         """
         Проверка числа на целое число
         :param number: число для проверки
@@ -101,15 +101,40 @@ class Products_in_the_store:
         return False
 
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         """
         :return: Возврат названия класса и переменныых поступивших при инициализации
         """
         return f"Products_in_the_store({self.__product_name}, {self.product_price}, {self.product_quantity})"
 
 
-    def __str__(self):
+    def __str__(self) -> str:
         """
         :return: Возврат названия товара
         """
         return self.__product_name
+
+
+class Phone(Products_in_the_store):
+    def __init__(self, product_name: str, product_price: int, product_quantity: int, number_of_sim: int = 0):
+        """
+        Модернизация класса Products_in_the_store, добавляет кол-во сим-карт
+        :param product_name: Наследие от Products_in_the_store
+        :param product_price: Наследие от Products_in_the_store
+        :param product_quantity: Наследие от Products_in_the_store
+        :param number_of_sim: Количество поддерживаемых сим-карт
+        """
+        super().__init__(product_name, product_price, product_quantity)
+        self.number_of_sim = number_of_sim
+
+
+    def __add__(self, other: object) -> int:
+        """
+        Сложение количества товаров класса Phone и Products_in_the_store
+        :param other: Класс Products_in_the_store
+        :return: Сумма количества товаров
+        """
+        if isinstance(other, Products_in_the_store):
+            return other.product_quantity + self.product_quantity
+        else:
+            return "Только с классом Products_in_the_store"
