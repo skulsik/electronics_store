@@ -138,3 +138,40 @@ class Phone(Products_in_the_store):
             return other.product_quantity + self.product_quantity
         else:
             return "Только с классом Products_in_the_store"
+
+
+class MixinLanguage:
+    """ Словарик для реализации смены языка"""
+    language_dict: dict = {'EN': 'RU', 'RU': 'EN'}
+
+
+    def __init__(self, *args):
+        """
+        Создаем переменную с установленой раскладкой
+        :param args: Передаем полученные параметры в следующий init
+        """
+        self.__language: str = 'EN'
+        super().__init__(*args)
+
+
+    def change_lang(self) -> str:
+        """
+        Метод меняющий раскладку, каждый вызов меняет на противоположную
+        :return: Возврат измененой раскладки
+        """
+        self.__language: str = self.language_dict[self.__language]
+        return self.__language
+
+
+    @property
+    def language(self) -> str:
+        return self.__language
+
+
+class KeyBoard(MixinLanguage, Products_in_the_store):
+    def __init__(self, *args):
+        """
+        Получает и передает параметры в следующий init
+        :param args:
+        """
+        super().__init__(*args)

@@ -45,9 +45,23 @@ from utils.utils import *
 # print(item1)
 
 # ТЗ-4
-phone1 = Phone("iPhone 14", 120_000, 5, 2)
-print(phone1)
+# phone1 = Phone("iPhone 14", 120_000, 5, 2)
+# print(phone1)
+#
+# phone2 = Products_in_the_store("Doogee", 12_000, 24)
+# print(phone1 + phone2)
+# print(phone1 + 454)
 
-phone2 = Products_in_the_store("Doogee", 12_000, 24)
-print(phone1 + phone2)
-print(phone1 + 454)
+# ТЗ-5
+kb = KeyBoard('Dark Project KD87A', 9600, 5)
+print(kb)
+
+print(kb.language)
+
+kb.change_lang()
+print(kb.language)
+
+kb.change_lang()
+print(kb.language)
+
+#kb.language = 'CH'

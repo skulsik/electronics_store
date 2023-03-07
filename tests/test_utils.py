@@ -123,3 +123,26 @@ class Test_Phone():
         :return:
         """
         assert (self.product1 + 7898) == "Только с классом Products_in_the_store"
+
+
+class Test_KeyBoard():
+    # Создаем экземпляр для теста
+    product = KeyBoard('Dark Project KD87A', 9600, 5)
+
+
+    def test__language(self):
+        """
+        Проверка на предворительно заданные данные
+        :return:
+        """
+        assert self.product.language == "EN"
+
+
+    def test_change_lang(self):
+        """
+        Проверка на смену раскладки, после вызова метода
+        :return:
+        """
+        assert self.product.change_lang() == "RU"
+        assert self.product.change_lang() == "EN"
+        assert self.product.change_lang() == "RU"
