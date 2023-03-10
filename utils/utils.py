@@ -3,11 +3,12 @@ import csv
 
 class Products_in_the_store:
     # Скидка!
-    price_level = 0.85
+    price_level: float = 0.85
     # Создает список(хранит экземпляры класса)
-    list_product_in_the_store = []
+    list_product_in_the_store: list = []
     # Флаг, обнуление списка, на случай если в существующий список товаров не нужно добавлять товары из файла
-    clear_list = True
+    clear_list: bool = True
+    path_file: str = 'data\items.csv'
 
 
     def __init__(self, product_name: str = "безымянный", product_price: int = 0, product_quantity: int = 0):
@@ -24,18 +25,31 @@ class Products_in_the_store:
 
 
     @classmethod
-    def read_csv(cls):
+    def read_csv(cls) -> list:
         """
         Считывает товар, его характеристики и записывает экземпляр в список
         Если флаг clear_list == True, обнуляет список, иначе дописывает в существующий
         :return:
         """
         if cls.clear_list:
-            cls.list_product_in_the_store = []
-        with open('data\items.csv') as file:
-            line_list = csv.DictReader(file)
-            for row in line_list:
-                cls(row['name'], row['price'], row['quantity'])
+            cls.list_product_in_the_store: list = []
+        try:
+            with open(cls.path_file, mode='r', encoding='cp1251') as file:
+                line_list = csv.DictReader(file)
+                for row in line_list:
+                    if 'name' not in row:
+                        raise ReadCSVError('ReadCSVErrorName: Отсутствует ключ name')
+                    elif 'price' not in row:
+                        raise ReadCSVError('ReadCSVErrorName: Отсутствует ключ price')
+                    elif 'quantity' not in row:
+                        raise ReadCSVError('ReadCSVErrorName: Отсутствует ключ quantity')
+                    else:
+                        cls(row['name'], row['price'], row['quantity'])
+        except ReadCSVError as e:
+            return e
+        except FileNotFoundError:
+            print('FileNotFoundError: Отсутствует файл item.csv')
+            return 'FileNotFoundError: Отсутствует файл item.csv'
 
 
     @property
@@ -64,7 +78,7 @@ class Products_in_the_store:
         Общая стоимость, данной категории товара
         :return: Возвращает общую стоимость товара = цена одного товара * количество данного товара
         """
-        total_cost_product = self.product_price * self.product_quantity
+        total_cost_product: int = self.product_price * self.product_quantity
         return total_cost_product
 
 
@@ -175,3 +189,17 @@ class KeyBoard(MixinLanguage, Products_in_the_store):
         :param args:
         """
         super().__init__(*args)
+
+
+class ReadCSVError(Exception):
+    """
+    Ошибка связанная с чтением файла
+    Возвращает переданную ошибку, либо предопределенную
+    """
+    def __init__(self, *args, **kwargs):
+        self.message = args[0] if args else 'ReadCSVError: Файл item.csv поврежден'
+        print(self.message)
+
+
+    def __str__(self):
+        return self.message

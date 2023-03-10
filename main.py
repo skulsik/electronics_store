@@ -53,15 +53,19 @@ from utils.utils import *
 # print(phone1 + 454)
 
 # ТЗ-5
-kb = KeyBoard('Dark Project KD87A', 9600, 5)
-print(kb)
+# kb = KeyBoard('Dark Project KD87A', 9600, 5)
+# print(kb)
+#
+# print(kb.language)
+#
+# kb.change_lang()
+# print(kb.language)
+#
+# kb.change_lang()
+# print(kb.language)
+#
+# kb.language = 'CH'
 
-print(kb.language)
-
-kb.change_lang()
-print(kb.language)
-
-kb.change_lang()
-print(kb.language)
-
-#kb.language = 'CH'
+# ТЗ-6
+# Для вызова ошибок, можно менять файлы в класе Products_in_the_store.path_file, но лучше глянуть тесты
+Products_in_the_store.read_csv()
