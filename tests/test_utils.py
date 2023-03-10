@@ -1,9 +1,34 @@
 from utils.utils import *
+import pytest
 
 
 class Test_Products_in_the_store():
     # Создаем экземпляр для теста
     products_in_the_store = Products_in_the_store()
+
+
+    def test_read_csv_not_file(self):
+        """Проверка на вывод ошибки отсутствует фаил"""
+        Products_in_the_store.path_file = 'items.csv'
+        assert Products_in_the_store.read_csv() == 'FileNotFoundError: Отсутствует файл item.csv'
+
+
+    def test_read_csv_no_name(self):
+        """Проверка на вывод ошибки нет ключа name"""
+        Products_in_the_store.path_file = '..\data\items_no_name.csv'
+        assert str(Products_in_the_store.read_csv()) == 'ReadCSVErrorName: Отсутствует ключ name'
+
+
+    def test_read_csv_no_price(self):
+        """Проверка на вывод ошибки нет ключа price"""
+        Products_in_the_store.path_file = '..\data\items_no_price.csv'
+        assert str(Products_in_the_store.read_csv()) == 'ReadCSVErrorName: Отсутствует ключ price'
+
+
+    def test_read_csv_no_quantity(self):
+        """Проверка на вывод ошибки нет ключа quantity"""
+        Products_in_the_store.path_file = '..\data\items_no_quantity.csv'
+        assert str(Products_in_the_store.read_csv()) == 'ReadCSVErrorName: Отсутствует ключ quantity'
 
 
     def test_total_cost_of_the_product_none(self):
